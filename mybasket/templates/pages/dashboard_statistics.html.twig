@@ -1,0 +1,42 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Bestellingen{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("components/dashboard/statistieken/statistics.html.twig") }}
+        </div><!--/.col-md-12 -->
+    </div><!--/.row -->
+    <script>
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dagen');
+            data.addColumn('number', 'Bestellingen');
+
+            data.addRows([
+                {% for key, stat in stats %}
+                ['{{ key }}', {{ stat }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                height: 400,
+                hAxis: {
+                    title: 'Dagen'
+                },
+                vAxis: {
+                    title: 'Aantal Bestellingen',
+                    viewWindow: {
+                        min: 0
+                    }
+                }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+    </script>
+{% endblock %}

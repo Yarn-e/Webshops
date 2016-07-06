@@ -1,0 +1,36 @@
+<!-- Modal -->
+<form method="post" action="{{ request_uri }}">
+    <div id="modalCopy" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Product Kopi&euml;ren</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Naar welke winkel wilt u '<span class="naam"></span>' kopiëren ?</p>
+                    {{ include('form/element/select.html.twig', {
+                        'name': "winkel",
+                        'options': Winkels,
+                        'current': product.Winkel,
+                        'empty': '-- Kies een winkel --'
+                    }) }}
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="copy" value="true">
+                    <input type="hidden" name="prodname" class="name">
+                    <input type="hidden" name="foto" class="foto">
+                    <input type="hidden" name="prijs" class="prijs">
+                    <input type="hidden" name="uitleg" class="uitleg">
+                    <input type="hidden" name="btw" class="btw">
+                    <input type="hidden" name="maxaantal" class="max">
+                    <input type="hidden" name="status" value="0">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit" class="btn btn-primary">Kopi&euml;ren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

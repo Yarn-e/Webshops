@@ -1,0 +1,15 @@
+<select name="{{ name }}" onchange="location = this.value;" class="form-control">
+    {% if empty %}
+        {% include "form/element/option.html.twig" with {
+        'value': selectempty,
+        'label': empty,
+        } %}
+    {% endif %}
+    {% for option in options %}
+        {% include "form/element/option.html.twig" with {
+        'value': option.value,
+        'current': current,
+        'label': option.label,
+        } %}
+    {% endfor %}
+</select>

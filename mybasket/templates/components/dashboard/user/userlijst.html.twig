@@ -1,0 +1,132 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="col-md-1">
+            {% if admin %}Gebruikers {% else %}Klanten {% endif %}
+        </div>
+        {% if showselect %}
+            <div class="col-md-2" style="margin-top: 5px;">
+                {{ include('form/element/selectlink.html.twig', {
+                    'name': "Winkels",
+                    'options': winkels,
+                    'current': currentID,
+                    'empty': 'Alle winkels'
+                }) }}
+            </div>
+        {% endif %}
+
+        <a href="#" class="btnlink pull-right" data-toggle="popover" data-placement="left"
+           title="{% if admin %}Gebruikersbeheer{% else %}Klanten raadplegen {% endif %}"
+           data-content="
+           {% if not admin %}
+              <p><b>Klanten raadplegen</b></p>
+              <p>Op deze pagina kan je gegevens van klanten raadplegen</p>
+            {% else %}
+              <p><b>Gebruikersbeheer</b></p>
+              <p>Op deze pagina kan je de gebruikers beheren. Je kan hier gebruikers wijzigen of verwijderen.</p>
+              <p><b>Acties</b></p>
+              <ul>
+                <li>
+                  <i class='fa fa-pencil' aria-hidden='true'></i> Gebruiker wijzigen
+                </li>
+                <li>
+                  <i class='fa fa-trash-o'></i> Gebruiker verwijderen
+                </li>
+              </ul>
+            {% endif %}
+            "><i class="fa fa-2x fa-question" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="panel-body panel-max">
+        <div class="table-responsive">
+            <table class="table table-striped results" id="TableSort" data-classes="">
+                <thead>
+                <tr>
+                    <th data-sortable="true">
+                        Voornaam
+                    </th>
+                    <th data-sortable="true">
+                        Achternaam
+                    </th>
+                    <th data-sortable="true">
+                        Email
+                    </th>
+                    <th data-sortable="true">
+                        Geslacht
+                    </th>
+                    <th data-sortable="true">
+                        Geboortedatum
+                    </th>
+                    <th data-sortable="true">
+                        Permissie
+                    </th>
+                    {% if admin %}
+                        <th data-sorter="false">
+                            Acties
+                        </th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>
+                            {{ user.Voornaam }}
+                        </td>
+                        <td>
+                            {{ user.Achternaam }}
+                        </td>
+                        <td>
+                            {% if user.Stamboeknummer == 0 %}
+                                {{ user.Email }}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.Stamboeknummer == 0 %}
+                                {% if user.Geslacht == 0 %}
+                                    Man
+                                {% else %}
+                                    Vrouw
+                                {% endif %}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.Stamboeknummer == 0 %}
+                                {{ user.Geboortedatum }}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ user.permissieomschrijving }}
+                        </td>
+                        {% if admin %}
+                            <td width="100px">
+                                <div class="btn-group">
+                                    {% if user.Permissie == 4 %}
+                                        <a href="userwijzig.php?ID={{ user.IDUser }}" class="btn btn-primary btnlink"
+                                           role="button" style="width: 74px;">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="userwijzig.php?ID={{ user.IDUser }}" class="btn btn-primary btnlink"
+                                           role="button">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger"
+                                                data-toggle='modal'
+                                                data-idvan='{{ user.IDUser }}'
+                                                data-naamvan='{{ [user.Voornaam,user.Achternaam]|join(' ') }}'
+                                                data-target="#modalVerwijder"><i class="fa fa-trash-o"></i>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

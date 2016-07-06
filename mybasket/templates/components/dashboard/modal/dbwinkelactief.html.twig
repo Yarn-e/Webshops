@@ -1,0 +1,23 @@
+<!-- Modal -->
+<form method="post" action="{{ request_uri }}">
+    <div id="modalDatabase3" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Winkels activeren</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Weet u zeker dat u alle winkels wilt activeren?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="WinkelAc" value="1" class="ID">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit" class="btn btn-primary">Activeren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

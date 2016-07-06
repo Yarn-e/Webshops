@@ -1,0 +1,11 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Bediendes{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("components/dashboard/bediende/bediendelijst.html.twig") }}
+        </div><!--/.col-md-12 -->
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/addbediende.html.twig") }}
+    {{ include("components/dashboard/modal/verwijderbediende.html.twig") }}
+{% endblock %}

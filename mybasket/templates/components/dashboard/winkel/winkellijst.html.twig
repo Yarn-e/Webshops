@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Winkels
+
+        <a href="#" class="btnlink pull-right" data-toggle="popover" data-placement="right"
+           title="{% if supervisor %}Winkels raadplegen{% else %}Winkelbeheer {% endif %}"
+           data-content="
+           {% if supervisor %}
+              <p><b>Winkels raadplegen</b></p>
+              <p>Op deze pagina kan je gegevens van winkels raadplegen</p>
+            {% else %}
+              <p><b>Winkelbeheer</b></p>
+              <p>Op deze pagina kan je de winkels beheren. Je kan hier winkels aanmaken, wijzigen of verwijderen.</p>
+            {% endif %}
+            "><i class="fa fa-2x fa-question" aria-hidden="true"></i></a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+            </thead>
+            <tbody>
+            {% if admin %}
+                <tr>
+                    <td><a href="winkel.php" class="tablelink">Winkel aanmaken</a></td>
+                </tr>
+            {% endif %}
+            {% for winkel in winkels %}
+                <tr>
+                    <td>
+                        <a href="winkel.php?IDWinkel={{ winkel.IDWinkel }}"
+                           class="tablelink">{{ winkel.Winkelnaam }}</a>
+                        {% if admin %}
+                            <a href="#" data-toggle='modal'
+                               data-idvan='{{ winkel.IDWinkel }}'
+                               data-naamvan='{{ winkel.Winkelnaam }}'
+                               data-target="#modalVerwijder" class="pull-right tablelink"><span
+                                        class="glyphicon glyphicon-remove"></span></a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>

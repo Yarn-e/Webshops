@@ -1,0 +1,157 @@
+/*!
+ * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+div.thumbnail:hover,
+div.thumbnail:focus,
+div.thumbnail.active {
+  border-color: #fff;
+  cursor: pointer;
+}
+
+.background-blue {
+    background-image: url('../image/back.png');
+}
+
+.container-hwite {
+    background-color: #FAF8FA;
+}
+.winkel {
+    padding: 10px;
+    border-color: #337ab7;
+}
+
+.winkel .Winkels-h1 {
+    color: whitesmoke;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+a:link,
+a:visited {
+    color: #333;
+}
+
+a:hover,
+a:active {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+
+.aardappel {
+    background-image: url('../image/placeholder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.fruit {
+    background-image: url('../image/fruit.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.header-user {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: darkgrey;
+    padding-top: 15px;
+}
+
+/* ---------- WINKELKAR ----------- */
+
+.winkelmand-product-highlight {
+    background: red;
+    border-radius: 20px; 
+    padding: 2px 4px 2px 4px; 
+    color: white; 
+    font-size: 10px; 
+    text-align: center;
+    margin-top: -20px;
+}
+
+.winkelmand-product-cover {
+   background-size: cover; 
+   background-image: url('../image/winkelkar.png');
+   
+}
+
+.winkelmand-product-image {
+    background-size: cover ; 
+    border-bottom-left-radius: 3px; 
+    border-top-left-radius: 3px; 
+    background-color: white; 
+    width: 250px; 
+    height: 122px; 
+    margin-top: -10px; 
+    margin-left: -10px; 
+    margin-bottom: -10px;
+    margin-right: 10px;
+    
+}
+
+.winkelmand-container {
+    max-height: 660px; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    padding: 20px;
+}
+
+
+.winkelmand-product-h1 {
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}

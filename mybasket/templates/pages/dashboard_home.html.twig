@@ -1,0 +1,62 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Home{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <a href="winkel.php">
+                <div class="panel panel-blue panel-widget ">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked basket">
+                                <use xlink:href="#stroked-basket"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">
+                                Winkels <span class="small text-muted">({{ winkels }})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/ .panel -->
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <a href="user.php">
+                <div class="panel panel-orange panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked male-user">
+                                <use xlink:href="#stroked-male-user"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">
+                                Gebruikers <span class="small text-muted">({{ users }})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/ .panel -->
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <a href="product.php">
+                <div class="panel panel-teal panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked clipboard-with-paper">
+                                <use xlink:href="#stroked-clipboard-with-paper"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">
+                                Producten <span class="small text-muted">({{ products }})</span>
+                            </div>
+                            <div class="text-muted"></div>
+                        </div>
+                    </div>
+                </div><!--/ .panel -->
+            </a>
+        </div>
+    </div><!--/.row -->
+
+{% endblock %}

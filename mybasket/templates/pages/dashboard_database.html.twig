@@ -1,0 +1,46 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Database{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-9">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <label>Handelingen Database</label>
+                </div>
+                <div class="panel-body panel-max">
+                    <div class="col-md-4">
+                        <h4>Gebruikers</h4>
+                        <button type="button" class="btn btn-danger" data-toggle='modal' data-target="#modalDatabase" style="width: 200px; margin: 5px; color: #fff;">
+                            Gebruikers verwijderen
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Winkels</h4>
+                        <button type="button" class="btn btn-success" data-toggle='modal' data-target="#modalDatabase3" style="width: 200px; margin: 5px; color: #fff;">
+                            Winkels activeren
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle='modal' data-target="#modalDatabase4" style="width: 200px; margin: 5px; color: #fff;">
+                            Winkels deactiveren
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Prodcuten</h4>
+                        <button type="button" class="btn btn-success" data-toggle='modal' data-target="#modalDatabase1" style="width: 200px; margin: 5px; color: #fff;">
+                            Producten activeren
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle='modal' data-target="#modalDatabase2" style="width: 200px; margin: 5px; color: #fff;">
+                            Producten deactiveren
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.col-md-3 -->
+
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/dbgebruiker.html.twig") }}
+    {{ include("components/dashboard/modal/dbproductactief.html.twig") }}
+    {{ include("components/dashboard/modal/dbproductdeactief.html.twig") }}
+    {{ include("components/dashboard/modal/dbwinkelactief.html.twig") }}
+    {{ include("components/dashboard/modal/dbwinkeldeactief.html.twig") }}
+{% endblock %}

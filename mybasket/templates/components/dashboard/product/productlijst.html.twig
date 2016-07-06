@@ -1,0 +1,153 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="col-md-1">
+            Producten
+        </div>
+        {% if not supervisor %}
+            <div class="col-md-2">
+                <a href="productwijzig.php">
+                    <button type="submit" class="btn btn-primary buttonalign">Product Toevoegen</button>
+                </a>
+            </div>
+        {% endif %}
+
+        {% if showselect %}
+            <div class="col-md-2" style="margin-top: 5px;">
+                {{ include('form/element/selectlink.html.twig', {
+                    'name': "Winkels",
+                    'options': winkels,
+                    'current': currentID,
+                    'empty': 'Alle winkels'
+                }) }}
+            </div>
+        {% endif %}
+
+        <a href="#" class="btnlink pull-right" data-toggle="popover" data-placement="left"
+           title="{% if supervisor %}Producten raadplegen{% else %}Productbeheer {% endif %}"
+           data-content="
+           {% if supervisor %}
+              <p><b>Producten raadplegen</b></p>
+              <p>Op deze pagina kan je producten raadplegen</p>
+            {% else %}
+              <p><b>Producten beheren</b></p>
+              <p>Op deze pagina kan je de producten beheren. Je kan hier producten toevoegen, wijzigen, verwijderen of kopi&euml;ren.</p>
+              <p><b>Acties</b></p>
+              <ul>
+                <li>
+                  <i class='fa fa-pencil' aria-hidden='true'></i> Prodcut wijzigen
+                </li>
+                <li>
+                  <i class='fa fa-folder-o'></i> Product kopi&euml;ren
+                </li>
+                <li>
+                  <i class='fa fa-trash-o'></i> Product verwijderen
+                </li>
+              </ul>
+            {% endif %}
+            "><i class="fa fa-2x fa-question" aria-hidden="true"></i></a>
+    </div>
+    <div class="panel-body panel-max">
+        <div class="table-responsive">
+            <table class="table" id="TableSort">
+                <thead>
+                <tr>
+                    <th data-sortable="true">
+                        Productnaam
+                    </th>
+                    <th data-sortable="true">
+                        Foto
+                    </th>
+                    <th data-sortable="true">
+                        Prijs
+                    </th>
+                    <th data-sortable="true">
+                        Uitleg
+                    </th>
+                    <th data-sortable="true">
+                        BTW
+                    </th>
+                    <th data-sortable="true">
+                        Maxaantal
+                    </th>
+                    <th data-sortable="true">
+                        Winkel
+                    </th>
+                    <th data-sortable="true">
+                        Status
+                    </th>
+                    {% if not supervisor %}
+                        <th data-sortable="false">
+                            Acties
+                        </th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr class="warning no-result">
+                    <td colspan="8">Geen resultaat</td>
+                    </tr> -->
+                {% for product in products %}
+                    <tr>
+                        <td>
+                            {{ product.Productnaam }}
+                        </td>
+                        <td>
+                            {{ product.Foto }}
+                        </td>
+                        <td>
+                            € {{ product.Prijs }}
+                        </td>
+                        <td class="fixed-width-300">
+                            {{ product.Uitleg }}
+                        </td>
+                        <td class="text-center">
+                            {{ product.BTW }}%
+                        </td>
+                        <td class="text-center">
+                            {{ product.Maxaantal }}
+                        </td>
+                        <td>
+                            {{ product.Winkelnaam }}
+                        </td>
+                        <td>
+                            {% if product.StatusProduct == 0 %}
+                                Beschikbaar
+                            {% else %}
+                                Niet beschikbaar
+                            {% endif %}
+                        </td>
+                        {% if not supervisor %}
+                            <td class="fixed-width-154">
+                                <div class="btn-group">
+                                    <a href="productwijzig?ID={{ product.IDProduct }}"
+                                       class="btn btn-primary btnlink" role="button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                    <button type="button" style="color:black;" class="btn btn-default"
+                                            data-toggle='modal'
+                                            data-naamvan='{{ product.Productnaam }}'
+                                            data-fotovan='{{ product.Foto }}'
+                                            data-prijsvan='{{ product.Prijs }}'
+                                            data-uitlegvan='{{ product.Uitleg }}'
+                                            data-btwvan='{{ product.BTW }}'
+                                            data-maxvan='{{ product.Maxaantal }}'
+                                            data-target="#modalCopy"><i class="fa fa-folder-o"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-toggle='modal'
+                                            data-idvan='{{ product.IDProduct }}'
+                                            data-naamvan='{{ product.Productnaam }}'
+                                            data-target="#modalVerwijder"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

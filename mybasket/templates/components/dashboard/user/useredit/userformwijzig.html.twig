@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Gebruiker wijzigen
+
+        <a href="#" class="btnlink pull-right" data-toggle="popover" data-placement="left" title="Gebruikers wijzigen"
+           data-content="
+            <p><b>Gebruiker wijzigen</b></p>
+              <p>Op deze pagina kan je de gebruikers wijzigen</p>
+            "><i class="fa fa-2x fa-question" aria-hidden="true"></i></a>
+    </div>
+    <div class="panel-body center-block">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-8">
+            <form action="{{ request_uri }}?ID={{ user.IDUser }}" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Voornaam</label>
+                    <input class="form-control" name="Voornaam" placeholder="bv. Jan"
+                           value="{{ user.Voornaam }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Achternaam</label>
+                    <input type="text" class="form-control" name="Achternaam" placeholder="bv. Jansens"
+                           value="{{ user.Achternaam }}" required>
+                </div>
+                {% if Smartschool %}
+                {% else %}
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="Email" placeholder="Vul een email in."
+                               value="{{ user.Email }}"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geslacht</label>
+                        {{ include('form/element/select.html.twig', {
+                            'name': "Geslacht",
+                            'options': Gender,
+                            'current': user.Geslacht
+                        }) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geboortedatum</label>
+                        <input type="text" class="form-control" name="Geboortedatum" placeholder="bv. 1/1/1900"
+                               value="{{ user.Geboortedatum }}" required>
+                    </div>
+                {% endif %}
+
+
+                {% if user.Permissie == 4 %}
+                {% else %}
+                    <div class="form-group">
+                        <label>Permissie</label>
+
+                        {{ include('form/element/select.html.twig', {
+                            'name': "Permissie",
+                            'options': Permissies,
+                            'current': user.Permissie
+                        }) }}
+                    </div>
+                {% endif %}
+                <div class="col-md-2">&nbsp;</div>
+                <div class="form-group col-md-8">
+                    {% if user.Permissie == 4 %} <input type="hidden" name="Permissie"
+                                                        value="{{ user.Permissie }}"> {% endif %}
+                    <input type="hidden" name="Smartschool" value="{{ user.Stamboeknummer }}">
+                    <button type="submit" class="btn btn-primary btn-equal">Opslaan</button>
+                    <button type="reset" class="btn btn-default">Ongedaan maken</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div><!-- .panel -->

@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="col-md-1">
+            Statistieken
+        </div>
+        {% if showselect %}
+            <div class="col-md-2" style="margin-top: 5px;">
+                {{ include('form/element/selectlink.html.twig', {
+                    'name': "Winkels",
+                    'options': Winkels,
+                    'current': currentID,
+                    'empty': 'Alle winkels'
+                }) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="panel-body panel-max">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div class="row">
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-8">
+                <h4>Bestellingen deze maand</h4>
+                <div id="chart_div"></div>
+            </div>
+            <div class="col-md-2">&nbsp;</div>
+        </div>
+        {% if not admin %}
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-8">
+                    <h4>Top 3 verkochte items:</h4>
+                    {% if notop3 %}
+                        <p>Er zijn geen producten verkocht!</p>
+                    {% else %}
+                        {% for key, product in top3 %}
+                            <p>
+                                Nummer {{ key }}: {{ product.Product }} is {{ product.Aantal }} keer verkocht.<br>
+                                {{ product.Product }} heeft € {{ product.Aantal * product.Prijs }} opgebracht.
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+        {% endif %}
+    </div>
+</div>

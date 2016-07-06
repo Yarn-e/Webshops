@@ -1,0 +1,10 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Gebruiker{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+                {{ include("components/dashboard/user/userlijst.html.twig") }}
+        </div><!--/.col-md-12 -->
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/verwijderuser.html.twig") }}
+{% endblock %}

@@ -1,0 +1,30 @@
+<!-- Modal -->
+<form method="post" action="{{ request_uri }}">
+    <div id="modalAdd" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Bediende toevoegen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Aan welke winkel wilt u '<span class="naam"></span>' bediende maken?</p>
+                    {{ include('form/element/select.html.twig', {
+                        'name': "winkel",
+                        'options': Winkels,
+                        'current': '',
+                        'empty': '-- Kies een winkel --'
+                    }) }}
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="IDUser" class="IDUser">
+                    <input type="hidden" name="usernaam" class="naamform">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit" class="btn btn-primary">Toevoegen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

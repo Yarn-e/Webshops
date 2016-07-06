@@ -1,0 +1,108 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="col-md-1">
+            Bestellingen
+        </div>
+        {% if showselect %}
+            <div class="col-md-2" style="margin-top: 5px;">
+                {{ include('form/element/selectlink.html.twig', {
+                    'name': "Winkels",
+                    'options': winkels,
+                    'current': currentID,
+                    'empty': 'Alle winkels'
+                }) }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="panel-body panel-max">
+        <div class="table-responsive">
+            <table class="table results" id="BestellingTable">
+                <thead>
+                <tr>
+                    <th data-sortable="true">
+                        Gebruiker
+                    </th>
+                    <th data-sortable="true">
+                        Product
+                    </th>
+                    <th data-sortable="true">
+                        Winkel
+                    </th>
+                    <th class="text-center" data-sortable="true">
+                        Aantal besteld
+                    </th>
+                    <th data-sortable="true">
+                        Eenheidsprijs
+                    </th>
+                    <th data-sortable="true">
+                        Totaalprijs
+                    </th>
+                    <th data-sortable="true">
+                        Status
+                    </th>
+                    {% if winkelbeheerder %}
+                        <th>Acties</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning no-result">
+                    <td colspan="7">Geen resultaat</td>
+                </tr>
+                {% for bestelling in bestellingen %}
+                    <tr>
+                        <td>
+                            {{ bestelling.Name }}
+                        </td>
+                        <td>
+                            {{ bestelling.Productnaam }}
+                        </td>
+                        <td>
+                            {{ bestelling.Winkelnaam }}
+                        </td>
+                        <td>
+                            {{ bestelling.Aantal }}
+                        </td>
+                        <td>
+                            € {{ bestelling.Eenheidsprijs }}
+                        </td>
+                        <td>
+                            € {{ bestelling.Totaalprijs }}
+                        </td>
+                        <td>
+                            {% if bestelling.Status == 1 %}
+                                Vervallen
+                            {% elseif bestelling.Status == 2 %}
+                                Besteld
+                            {% elseif bestelling.Status == 3 %}
+                                Afgehandeld
+                            {% elseif bestelling.Status == 4 %}
+                                Geannuleerd
+                            {% endif %}
+                        </td>
+                        {% if winkelbeheerder %}
+                            <td class="fixed-width-154">
+                                {% if bestelling.Status == 2 %}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary"
+                                                data-toggle='modal'
+                                                data-idvan='{{ bestelling.IDBestelling }}'
+                                                data-target="#modalGoed"><i class="fa fa-check"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger"
+                                                data-toggle='modal'
+                                                data-idvan='{{ bestelling.IDBestelling }}'
+                                                data-target="#modalVerwijder"><i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

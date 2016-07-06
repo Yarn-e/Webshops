@@ -1,0 +1,11 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Product{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("components/dashboard/product/productlijst.html.twig") }}
+        </div><!--/.col-md-12 -->
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/verwijderproduct.html.twig") }}
+    {{ include("components/dashboard/modal/copyproduct.html.twig") }}
+{% endblock %}

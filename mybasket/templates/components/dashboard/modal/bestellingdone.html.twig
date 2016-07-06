@@ -1,0 +1,23 @@
+<!-- Modal -->
+<form method="post" action="{{ request_uri }}">
+    <div id="modalGoed" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Bestelling afhandelen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Weet u zeker dat deze bestelling is afgehandeld?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="afhandel" class="ID">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit" class="btn btn-primary">Afhandelen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

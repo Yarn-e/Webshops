@@ -1,0 +1,112 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="col-md-1">
+            Bediendes
+        </div>
+        {% if showselect %}
+            <div class="col-md-2" style="margin-top: 5px;">
+                {{ include('form/element/selectlink.html.twig', {
+                    'name': "Winkels",
+                    'options': winkels,
+                    'current': currentID,
+                    'empty': 'Alle winkels'
+                }) }}
+            </div>
+        {% endif %}
+
+        <a href="#" class="btnlink pull-right" data-toggle="popover" data-placement="left" title="Bediendebeheer"
+           data-content="
+           {% if supervisor %}
+            <p><b>Bedieden raadplegen</b></p>
+            <p>Op deze pagina kan je bedienden raaplegen</p>
+           {% else %}
+            <p><b>Bediendebeheer</b></p>
+              <p>Op deze pagina kan je de bedienden beheren. Je kan hier bedienden toewijzen aan een winkel of van een winkel halen.</p>
+              <p><b>Acties</b></p>
+              <ul>
+                <li>
+                  <i class='fa fa-plus-circle' aria-hidden='true'></i> Bediende toewijzen aan een winkel
+                </li>
+                <li>
+                  <i class='fa fa-trash-o'></i> Bediende van een winkel halen
+                </li>
+              </ul>
+            {% endif %}
+            "><i class="fa fa-2x fa-question" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="panel-body panel-max">
+        <div class="table-responsive">
+            <table class="table results" id="TableSort">
+                <thead>
+                <tr>
+                    <th data-sortable="true">
+                        Voornaam
+                    </th>
+                    <th data-sortable="true">
+                        Achternaam
+                    </th>
+                    <th data-sortable="true">
+                        Permissie
+                    </th>
+                    <th data-sortable="true">
+                        Bediende van Winkel
+                    </th>
+                    {% if not supervisor %}
+                        <th data-sortable="false">
+                            Acties
+                        </th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for bediende in bediendes %}
+                    <tr>
+                        <td>
+                            {{ bediende.Voornaam }}
+                        </td>
+                        <td>
+                            {{ bediende.Achternaam }}
+                        </td>
+                        <td>
+                            {% if bediende.permissieomschrijving == 'Bediende' %}
+                                {{ bediende.permissieomschrijving }}
+                            {% else %}
+                                Smartschoolgebruiker
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ bediende.Winkelnaam }}
+                        </td>
+                        {% if not supervisor %}
+                            <td class="fixed-width-154">
+                                <div class="btn-group">
+                                    {% if bediende.permissieomschrijving == 'Bediende' %}
+                                        <button type="button" class="btn btn-danger" style="width: 74px;"
+                                                data-toggle='modal'
+                                                data-idvan='{{ bediende.IDUser }}'
+                                                data-idwinkel='{{ bediende.IDWinkel }}'
+                                                data-naamvan='{{ [bediende.Voornaam,bediende.Achternaam]|join(' ') }}'
+                                                data-target="#modalVerwijderBediende"><i class="fa fa-trash-o"
+                                                                                         aria-hidden="true"></i>
+                                        </button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-primary"
+                                                style="width: 74px;"
+                                                data-toggle='modal'
+                                                data-iduser='{{ bediende.IDUser }}'
+                                                data-naamvan='{{ [bediende.Voornaam,bediende.Achternaam]|join(' ') }}'
+                                                data-target="#modalAdd"><i class="fa fa-plus-circle"
+                                                                           aria-hidden="true"></i>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

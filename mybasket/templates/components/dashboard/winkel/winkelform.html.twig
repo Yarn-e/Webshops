@@ -1,0 +1,103 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ winkel.Winkelnaam|default('Winkel toevoegen') }}</div>
+    <div class="panel-body center-block">
+        <div class="col-md-8">
+            <form action="{{ request_uri }}?IDWinkel={{ winkel.IDWinkel }}" method="post" enctype="multipart/form-data">
+
+                {% if not supervisor %}
+                    <div class="form-group">
+                        <label>Winkelnaam</label>
+                        <input class="form-control" name="Winkelnaam" placeholder="Hier uw winkelnaam"
+                               value="{{ winkel.Winkelnaam }}" required>
+                    </div>
+                {% endif %}
+
+                {% if supervisor %}
+                    <div class="form-group">
+                        <label class="control-label">Activatie:</label><br>
+                        {% if winkel.Activatie == 0 %}
+                            Actief
+                        {% elseif winkel.Activatie == 1 %}
+                            In opbouw
+                        {% else %}
+                            Niet actief
+                        {% endif %}
+
+                    </div>
+                {% else %}
+                    {% if showactivation %}
+                        <div class="form-group">
+                            <label class="control-label">Activatie</label><br>
+                            {% include "form/element/radio.html.twig" with {
+                            'value': 0,
+                            'name': 'Activatie',
+                            'current': winkel.Activatie,
+                            'label': 'Actief'
+                            } %}
+                            {% include "form/element/radio.html.twig" with {
+                            'value': 1,
+                            'name': 'Activatie',
+                            'current': winkel.Activatie,
+                            'label': 'In opbouw'
+                            } %}
+                            {% include "form/element/radio.html.twig" with {
+                            'value': 2,
+                            'name': 'Activatie',
+                            'current': winkel.Activatie,
+                            'label': 'Niet actief'
+                            } %}
+                        </div>
+                    {% else %}
+                        <input type="hidden" name="Activatie" value="1">
+                    {% endif %}
+                {% endif %}
+
+                <div class="form-group">
+                    {% if supervisor %}
+                        <label>Banner van de winkel</label><br>
+                        <img id="showimg" width="178px" height="100px"
+                             src="../mybasket/files/images/{{ winkel.Banner|default('noimage.png') }}">
+
+                    {% else %}
+                        <img id="showimg" class="pull-right" width="178px" height="100px"
+                             src="../mybasket/files/images/{{ winkel.Banner|default('noimage.png') }}">
+                        <label>Banner van de winkel</label>
+                        <input type="file" name="banner" onchange="readURL(this);">
+                        <p class="help-block">{{ winkel.Banner|default('Alleen .jpg/.png/.gif') }}</p>
+                        <input type="hidden" name="currbanner" value="{{ winkel.Banner }}">
+                    {% endif %}
+                </div>
+                {% if admin %}
+                    <div class="form-group">
+                        <label>Winkelbeheerder</label>
+                        {{ include('form/element/select.html.twig', {
+                            'name': "Winkelbeheerder",
+                            'options': beheerders,
+                            'current': winkel.Winkelbeheerder,
+                            'empty': '-- Kies een beheerder --'
+                        }) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supervisor</label>
+                        {{ include('form/element/select.html.twig', {
+                            'name': "Supervisor",
+                            'options': supervisors,
+                            'current': winkel.Supervisor,
+                            'empty': '-- Kies een supervisor --'
+                        }) }}
+                    </div>
+                {% endif %}
+
+                {% if not admin %}
+                    <input type="hidden" name="Winkelbeheerder" value="{{ winkel.Winkelbeheerder }}">
+                    <input type="hidden" name="Supervisor" value="{{ winkel.Supervisor }}">
+                {% endif %}
+                {% if not supervisor %}
+                    <button type="submit" class="btn btn-primary btn-equal">Opslaan</button>
+                    <button type="reset" class="btn btn-default">Ongedaan maken</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div><!-- .panel -->

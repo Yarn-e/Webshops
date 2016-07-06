@@ -1,0 +1,171 @@
+.product-sm {
+    padding-right: 10px;
+    margin-top: 50px;
+}
+
+div.thumbnail:hover,
+div.thumbnail:focus,
+div.thumbnail.active {
+  border-color: #337ab7;
+  cursor: pointer;
+}
+
+.background-blue {
+    background-image: url('../image/back.png')
+}
+
+.container-hwite {
+    background-color: #FAF8FA
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.header-user {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: darkgrey;
+    padding-top: 15px;
+}
+
+.header-cart {
+    position: relative;
+    display: block;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.header-cart-text {
+    font-size: 12px;
+    color: whitesmoke;
+}
+
+.uploadFoto {
+    position:absolute;
+    bottom: 10px;
+    right:50px;
+}
+
+
+/*******************************
+           alert css
+*******************************/
+
+.bg-primary {
+	color: #1b3548;
+	background-color: #e9ecf2;
+}
+a.bg-primary:hover {
+	background-color: #e9ecf2;
+}
+.bg-success {
+	color: #fff;
+	background-color: #8ad919;
+}
+a.bg-success:hover {
+	background-color: #8ad919;
+}
+.bg-success a {
+	color: rgba(255, 255, 255, .75);
+}
+.bg-info {
+	color: #fff;
+	background-color: #30a5ff;
+}
+a.bg-info:hover {
+	background-color: #30a5ff;
+}
+.bg-info a {
+	color: rgba(255, 255, 255, .75);
+}
+.bg-warning {
+	color: #fff;
+	background-color: #ffb53e;
+}
+a.bg-warning:hover {
+	background-color: #ffb53e;
+}
+.bg-warning a {
+	color: rgba(255, 255, 255, .75);
+}
+.bg-danger {
+	color: #fff;
+	background-color: #f9243f;
+}
+a.bg-danger:hover {
+	background-color: #f9243f;
+}
+.bg-danger a {
+	color: rgba(255, 255, 255, .75);
+}
+
+.alertCustom{
+	width: 200px;
+	height: 40px;
+	margin: 0 10px 0 0;
+}
+
+.contact-link:link, .contact-link:visited {
+    color: #333;
+    font-weight: bold;
+}
+
+.contact-link:hover, .contact-link:active {
+    color: lightgrey;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*******************************
+           corner-ribbon css
+*******************************/
+
+.ribbon-wrapper-maroon {
+    width: 142px;
+    height: 137px;
+    overflow: hidden;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+}
+
+.ribbon-maroon {
+    font: bold 15px Sans-Serif;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform:    rotate(-45deg);
+    -ms-transform:     rotate(-45deg);
+    -o-transform:      rotate(-45deg);
+    position: relative;
+    padding: 12px 0;
+    left: -35px;
+    top: 19px;
+    width: 150px;
+    background-color: #800000;
+    color: #fff;
+}
+
+.ribbon-maroon:before, .ribbon-maroon:after {
+    content: "";
+    border-top:   3px solid darkred;   
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: 0px;
+}
+
+.ribbon-maroon:before {
+    left: 0;
+}
+.ribbon-maroon:after {
+    right: 0;
+}​

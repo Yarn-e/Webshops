@@ -1,0 +1,11 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Bestelling{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("components/dashboard/bestelling/bestellinglijst.html.twig") }}
+        </div><!--/.col-md-12 -->
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/bestellingbad.html.twig") }}
+    {{ include("components/dashboard/modal/bestellingdone.html.twig") }}
+{% endblock %}

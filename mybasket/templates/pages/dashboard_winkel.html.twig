@@ -1,0 +1,17 @@
+{% extends "layouts/admincontent.html.twig" %}
+{% block page_title %}Winkel{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            {{ include("components/dashboard/winkel/winkellijst.html.twig") }}
+        </div>
+        {% if (winkel is empty) and (winkelbeheerder or supervisor) %}
+
+        {% else %}
+            <div class="col-md-8">
+                {{ include("components/dashboard/winkel/winkelform.html.twig") }}
+            </div><!--/ .col-md-8 -->
+        {% endif %}
+    </div><!--/.row -->
+    {{ include("components/dashboard/modal/verwijderwinkel.html.twig") }}
+{% endblock %}

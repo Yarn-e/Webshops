@@ -1,0 +1,72 @@
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <ul class="nav menu">
+        <li {% if page == 'Home' %} class="active" {% endif %}>
+            <a href="index.php">
+                <svg class="glyph stroked home">
+                    <use xlink:href="#stroked-home"></use>
+                </svg>
+                Dashboard
+            </a>
+        </li>
+        <li {% if page == 'Gebruiker' %} class="active" {% endif %}>
+            <a href="user.php">
+                <svg class="glyph stroked female user ">
+                    <use xlink:href="#stroked-female-user"/>
+                </svg>
+                {% if mini_admin %}Klanten {% else %}Gebruikers {% endif %}
+            </a>
+        </li>
+        <li {% if page == 'Bediende' %} class="active" {% endif %}>
+            <a href="bediende.php">
+                <svg class="glyph stroked male user ">
+                    <use xlink:href="#stroked-male-user"/>
+                </svg>
+                Bedienden
+            </a>
+        </li>
+        <li {% if page == 'Winkel' %} class="active" {% endif %}>
+            <a href="winkel.php">
+                <svg class="glyph stroked basket ">
+                    <use xlink:href="#stroked-basket"/>
+                </svg>
+                Winkels
+            </a>
+        </li>
+        <li {% if page == 'Product' %} class="active" {% endif %}>
+            <a href="product.php">
+                <svg class="glyph stroked clipboard-with-paper">
+                    <use xlink:href="#stroked-clipboard-with-paper"/>
+                </svg>
+
+                Producten
+            </a>
+        </li>
+        <li {% if page == 'Statistieken' %} class="active" {% endif %}>
+            <a href="statistics.php">
+                <svg class="glyph stroked line-graph">
+                    <use xlink:href="#stroked-line-graph" />
+                </svg>
+                Statistieken
+            </a>
+        </li>
+        <li {% if page == 'Bestelling' %} class="active" {% endif %}>
+            <a href="bestelling.php">
+                <svg class="glyph stroked tag">
+                    <use xlink:href="#stroked-tag"/>
+                </svg>
+                Bestellingen
+            </a>
+        </li>
+        {% if admin %}
+            <li {% if page == 'Database' %} class="active" {% endif %}>
+                <a href="database.php">
+                    <svg class="glyph stroked database">
+                        <use xlink:href="#stroked-database"/>
+                    </svg>
+                    Database
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+</div><!--/.sidebar-->

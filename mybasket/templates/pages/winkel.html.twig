@@ -1,0 +1,15 @@
+{% extends "layouts/content.html.twig" %}
+{% block content %}
+    <div class="row">
+        {% for winkel in winkels %}
+            <a href='winkel.php?WID={{ winkel.IDWinkel }}' alt="">
+            <div class="col-lg-12 aardappel winkel thumbnail" 
+                 {% if winkel.Banner %}
+                     style="background-image:url('mybasket/files/images/{{ winkel.Banner }}');"
+                 {% endif %}>
+                <h1 class="Winkels-h1">{{ winkel.Winkelnaam }}</h1>
+            </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

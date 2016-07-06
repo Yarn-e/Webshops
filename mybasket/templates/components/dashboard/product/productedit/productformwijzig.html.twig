@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ product.Productnaam|default('Product aanmaken') }}</div>
+    <div class="panel-body center-block">
+        <div class="col-md-8">
+            <form action="{{ request_uri }}?ID={{ product.IDProduct }}" method="post"
+                  enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Productnaam</label>
+                    <input class="form-control" name="Productnaam" placeholder="bv. Aardappel"
+                           value="{{ product.Productnaam }}" required>
+                </div>
+
+                <div class="form-group">
+                    <img id="showimg" class="pull-right" width="178px" height="100px"
+                         src="../ProductImage/{{ product.Foto|default('noimage.png') }}">
+                    <label>Foto van het product</label>
+                    <input type="file" name="Foto" onchange="readURL(this);">
+                    <p class="help-block">{{ product.Foto|default('Alleen .jpg/.png/.gif') }}</p>
+                    <input type="hidden" name="currfoto" value="{{ product.Foto }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Prijs</label>
+                    <input type="text" class="form-control" name="Prijs" placeholder="bv. 5,55"
+                           value="{{ product.Prijs }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>BTW</label>
+                    {{ include('form/element/select.html.twig', {
+                        'name': "BTW",
+                        'options': BTW,
+                        'current': product.BTW
+                    }) }}
+                </div>
+
+                <div class="form-group">
+                    <label>Uitleg</label>
+                    <textarea class="form-control" rows="3" draggable="false" name="Uitleg"
+                              required>{{ product.Uitleg }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Maximum aantal</label>
+                    <input type="number" class="form-control" name="Maxaantal"
+                           value="{{ product.Maxaantal }}" required>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Beschikbaarheid</label><br>
+                    {% include "form/element/radio.html.twig" with {
+                    'value': 0,
+                    'name': 'Status',
+                    'current': product.StatusProduct,
+                    'label': 'Beschikbaar'
+                    } %}
+                    {% include "form/element/radio.html.twig" with {
+                    'value': 1,
+                    'name': 'Status',
+                    'current': product.StatusProduct,
+                    'label': 'Niet Beschikbaar'
+                    } %}
+                </div>
+
+                <div class="form-group">
+                    <label>Winkel</label>
+                    {{ include('form/element/select.html.twig', {
+                        'name': "Winkel",
+                        'options': Winkels,
+                        'current': product.Winkel,
+                        'empty': '-- Kies een winkel --'
+                    }) }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-equal">Opslaan</button>
+                    <button type="reset" class="btn btn-default">Ongedaan maken</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div><!-- .panel -->
